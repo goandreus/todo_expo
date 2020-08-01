@@ -24,9 +24,7 @@ class _CustomButtonState extends State<CustomButton> {
         // setState(() {
         //   titulo = 'Tittle Button';
         // });
-        Navigator.of(context).push(MaterialPageRoute(builder: (context){
-          return FormContactPage();
-        }));
+        Navigator.pushNamed(context, 'form_contact');
       },
       child: Container(
         height: 60,

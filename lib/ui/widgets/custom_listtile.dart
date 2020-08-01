@@ -10,9 +10,10 @@ class CustomListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context){
-          return ContactDetailPage(persona: person, contenido: person.nombre.contains('Andres')? 'Nuevo Contenido': 'No se encontro contenido',);
-        }));
+        Navigator.pushNamed(context, 'contact_detail', arguments: DetailsContactPageArguments(
+          persona: person,
+          contenido: person.nombre.contains('Andres') ? 'Contenido' : 'Contenido Explicito',
+        ));
       },
         trailing: SizedBox(
           width: 50,
