@@ -7,6 +7,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  String  titulo = 'Material App';
 
   List<PersonModel> persons = [persona1,persona2,persona3,persona1,persona2,persona3,persona1,persona2,persona3,persona1,persona2,persona3,];
 
@@ -16,7 +17,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           child: Icon(Icons.adb),
         ),
         appBar: AppBar(
-          title: Text('Material'),
+          title: Text(titulo),
           actions: <Widget>[
             IconButton(
               onPressed: (){},
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
             child: ListView(
             children: <Widget>[
               for(int i=0;i<persons.length;i++)
-              customListTitle(persons[i])
+              CustomListTile(person: persons[i])
             ],
         ),
           ),
@@ -87,8 +87,17 @@ class MyApp extends StatelessWidget {
     ),
   );
 
-  Widget customListTitle(PersonModel person){
-    return ListTile(
+  
+}
+
+class CustomListTile extends StatelessWidget {
+  const CustomListTile({Key key, this.person}) : super(key: key);
+
+  final PersonModel person;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ListTile(
           trailing: SizedBox(
             width: 50,
             child: Row(
@@ -101,7 +110,7 @@ class MyApp extends StatelessWidget {
           leading: Icon(person.iconoIzquierda),
           title: Text(person.nombre),
           subtitle: Text(person.descripcion),
-        );
+        ),
+    );
   }
 }
-
