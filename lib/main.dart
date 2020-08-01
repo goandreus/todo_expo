@@ -7,14 +7,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
 
-  PersonModel persona1 = PersonModel(
-    nombre: 'Andres',
-    descripcion: 'Example',
-    iconoDerecha: Icons.message,
-    iconoIzquierda: Icons.person,
-  );
+  List<PersonModel> persons = [persona1,persona2,persona3,persona1,persona2,persona3,persona1,persona2,persona3,persona1,persona2,persona3,];
 
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,16 +37,27 @@ class MyApp extends StatelessWidget {
           ],
         ),
       
-      body: Container(
-        child: customListTitle(persona1),
+      body: ListView(
+        children: <Widget>[
+          for(int i=0;i<persons.length;i++)
+          customListTitle(persons[i])
+        ],
       ),)
     );
   }
 
-  
+
   Widget customListTitle(PersonModel person){
     return ListTile(
-          trailing: Icon(person.iconoDerecha),
+          trailing: SizedBox(
+            width: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(person.iconoIzquierda), Icon(Icons.call),
+              ],
+            ),
+          ),
           leading: Icon(person.iconoIzquierda),
           title: Text(person.nombre),
           subtitle: Text(person.descripcion),
