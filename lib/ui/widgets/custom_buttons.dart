@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:todo_expo/controllers/main_controller.dart';
-import 'package:todo_expo/ui/pages/form_contact_page.dart';
+import 'package:todo_expo/controllers/theme_controller.dart';
 
 class CustomButton extends StatelessWidget {
   
   ValueNotifier<String> titulo = ValueNotifier<String>('Add Contact');
+  ThemeController _controller = ThemeController.instance;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        _controller.changeTheme(true);
         titulo.value = "Value notifier button";
         pressButton();
         // setState(() {
