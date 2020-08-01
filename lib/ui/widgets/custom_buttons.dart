@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_expo/controllers/main_controller.dart';
+import 'package:todo_expo/ui/pages/form_contact_page.dart';
 
 class CustomButton extends StatefulWidget {
   @override
@@ -20,9 +21,12 @@ class _CustomButtonState extends State<CustomButton> {
     return InkWell(
       onTap: () {
         pressButton();
-        setState(() {
-          titulo = 'Tittle Button';
-        });
+        // setState(() {
+        //   titulo = 'Tittle Button';
+        // });
+        Navigator.of(context).push(MaterialPageRoute(builder: (context){
+          return FormContactPage();
+        }));
       },
       child: Container(
         height: 60,
