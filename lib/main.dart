@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_expo/controllers/main_controller.dart';
 import 'package:todo_expo/models/person_model.dart';
 
 void main() {
@@ -19,6 +20,12 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            print('Prueba');
+          },
+          child: Icon(Icons.adb),
+        ),
         appBar: AppBar(
           title: Text('Material'),
           actions: <Widget>[
@@ -40,6 +47,7 @@ class MyApp extends StatelessWidget {
       body: Column(
         children: <Widget>[
           customButton(),
+          buttons(),
           Expanded(
             child: ListView(
             children: <Widget>[
@@ -53,18 +61,30 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  Widget customButton() => Container(
-            height: 60,
-            width: double.infinity,
-            margin: EdgeInsets.all(8),
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.red),
-              borderRadius: BorderRadius.circular(10)
-            ),
-            child: Center(
-              child: Text('Agregar Contacto', style: TextStyle(color: Colors.red, fontSize: 20),),
-            ),
+  Widget buttons(){
+    return FlatButton(
+      onPressed: (){},
+      child: Text('Flat button'),
+    );
+  }
+
+  Widget customButton() => InkWell(
+    onTap: (){
+      pressButton();
+    },
+    child: Container(
+              height: 60,
+              width: double.infinity,
+              margin: EdgeInsets.all(8),
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.red),
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: Center(
+                child: Text('Agregar Contacto', style: TextStyle(color: Colors.red, fontSize: 20),),
+              ),
+    ),
   );
 
   Widget customListTitle(PersonModel person){
