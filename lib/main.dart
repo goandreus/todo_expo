@@ -37,15 +37,35 @@ class MyApp extends StatelessWidget {
           ],
         ),
       
-      body: ListView(
+      body: Column(
         children: <Widget>[
-          for(int i=0;i<persons.length;i++)
-          customListTitle(persons[i])
+          customButton(),
+          Expanded(
+            child: ListView(
+            children: <Widget>[
+              for(int i=0;i<persons.length;i++)
+              customListTitle(persons[i])
+            ],
+        ),
+          ),
         ],
       ),)
     );
   }
 
+  Widget customButton() => Container(
+            height: 60,
+            width: double.infinity,
+            margin: EdgeInsets.all(8),
+            padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.red),
+              borderRadius: BorderRadius.circular(10)
+            ),
+            child: Center(
+              child: Text('Agregar Contacto', style: TextStyle(color: Colors.red, fontSize: 20),),
+            ),
+  );
 
   Widget customListTitle(PersonModel person){
     return ListTile(
