@@ -23,12 +23,16 @@ List<Widget> pages = [
     child: Column(
       children: <Widget>[
         CustomButton(),
-        buttons(),
+       // buttons(),
         Expanded(
           child: ListView(
             children: <Widget>[
               for (int i = 0; i < persons.length; i++)
-                CustomListTile(person: persons[i])
+                Dismissible(
+                  background: Container(color: Colors.red,),
+                  onDismissed: (direction) => persons.removeAt(i),
+                  key: Key(i.toString()),
+                  child: CustomListTile(person: persons[i]))
             ],
           ),
         ),
@@ -40,12 +44,14 @@ List<Widget> pages = [
   )
 ];
 
-Widget buttons() {
-  return FlatButton(
-    onPressed: () {},
-    child: Text('Flat button'),
-  );
-}
+// Widget buttons() {
+//   return FlatButton(
+//     onPressed: () {},
+//     child: Text('Flat button'),
+//   );
+// }
+
+GlobalKey<ScaffoldState> homeKey = GlobalKey<ScaffoldState>();
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -65,10 +71,12 @@ class _HomePageState extends State<HomePage> {
     picker = 0;
   }
 
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: homeKey,
         drawer: Drawer(
           child: Column(
             children: <Widget>[
@@ -82,6 +90,7 @@ class _HomePageState extends State<HomePage> {
               ListTile(
                 title: Text('Inicio'),
                 onTap: () {
+                  homeKey.currentState.showSnackBar(SnackBar(content: Text('Soy un snackbar')));
                   Navigator.of(context).pop();
                   setState(() {
                     picker = 0;
