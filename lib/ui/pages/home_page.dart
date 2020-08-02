@@ -1,48 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:todo_expo/models/person_model.dart';
+import 'package:todo_expo/ui/pages/list_contact_page.dart';
 import 'package:todo_expo/ui/widgets/custom_buttons.dart';
 import 'package:todo_expo/ui/widgets/custom_listtile.dart';
 
-List<PersonModel> persons = [
-  persona1,
-  persona2,
-  persona3,
-  persona1,
-  persona2,
-  persona3,
-  persona1,
-  persona2,
-  persona3,
-  persona1,
-  persona2,
-  persona3,
-];
+
 
 List<Widget> pages = [
-  Container(
-    child: Column(
-      children: <Widget>[
-        CustomButton(),
-        // buttons(),
-        Expanded(
-          child: ListView.builder(
-            itemCount: persons.length,
-            itemBuilder: (context, index){
-
-              return Dismissible(
-                    background: Container(
-                      color: Colors.red,
-                    ),
-                    onDismissed: (direction) => persons.removeAt(index),
-                    key: Key(index.toString()),
-                    child: CustomListTile(person: persons[index]));
-            },
-          ),
-        ),
-      ],
-    ),
-  ),
+  ListContactPage(),
   Container(
     color: Colors.red,
   )
