@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:todo_expo/models/person_model.dart';
 import 'package:todo_expo/ui/widgets/custom_buttons.dart';
@@ -23,17 +24,20 @@ List<Widget> pages = [
     child: Column(
       children: <Widget>[
         CustomButton(),
-       // buttons(),
+        // buttons(),
         Expanded(
-          child: ListView(
-            children: <Widget>[
-              for (int i = 0; i < persons.length; i++)
-                Dismissible(
-                  background: Container(color: Colors.red,),
-                  onDismissed: (direction) => persons.removeAt(i),
-                  key: Key(i.toString()),
-                  child: CustomListTile(person: persons[i]))
-            ],
+          child: ListView.builder(
+            itemCount: persons.length,
+            itemBuilder: (context, index){
+
+              return Dismissible(
+                    background: Container(
+                      color: Colors.red,
+                    ),
+                    onDismissed: (direction) => persons.removeAt(index),
+                    key: Key(index.toString()),
+                    child: CustomListTile(person: persons[index]));
+            },
           ),
         ),
       ],
@@ -71,7 +75,6 @@ class _HomePageState extends State<HomePage> {
     picker = 0;
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -90,7 +93,8 @@ class _HomePageState extends State<HomePage> {
               ListTile(
                 title: Text('Inicio'),
                 onTap: () {
-                  homeKey.currentState.showSnackBar(SnackBar(content: Text('Soy un snackbar')));
+                  homeKey.currentState
+                      .showSnackBar(SnackBar(content: Text('Soy un snackbar')));
                   Navigator.of(context).pop();
                   setState(() {
                     picker = 0;
@@ -109,11 +113,18 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            print('Prueba');
+        floatingActionButton: Builder(
+          builder: (BuildContext context) {
+            return FloatingActionButton(
+              onPressed: () {
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text('Hi Snackbar'),
+                ));
+                print('Prueba');
+              },
+              child: Icon(Icons.adb),
+            );
           },
-          child: Icon(Icons.adb),
         ),
         appBar: AppBar(
           title: Text(titulo),
