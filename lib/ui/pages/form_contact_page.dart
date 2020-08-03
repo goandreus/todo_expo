@@ -44,7 +44,12 @@ class _FormContactPageState extends State<FormContactPage> {
                 children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: 'Nombre'
+                      hintText: 'Nombre',
+                      prefixIcon: Icon(Icons.person),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Theme.of(context).primaryColor)
+                      ),
+                      labelText: 'Ej. Andres Chavez'
                     ),
                     controller: _nameController,
                     onChanged: (value) => print(_nameController.text),
@@ -54,6 +59,11 @@ class _FormContactPageState extends State<FormContactPage> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(
+                      hintText: 'NickName',
+                      prefixIcon: Icon(Icons.person),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Theme.of(context).primaryColor)
+                      ),
                       labelText: 'NickName'
                     ),
                     controller: _nicknameController,
@@ -64,7 +74,12 @@ class _FormContactPageState extends State<FormContactPage> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: 'Telefono'
+                      hintText: 'Telefono',
+                      prefixIcon: Icon(Icons.phone),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Theme.of(context).primaryColor)
+                      ),
+                      labelText: 'Ej. (+591) 978757741'
                     ),
                     controller: _telefonoController,
                     onChanged: (value) => print(_telefonoController.text),
