@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
         // setState(() {
         //   titulo = 'Tittle Button';
         // });
-        //Navigator.pushNamed(context, 'form_contact');
+        Navigator.pushNamed(context, 'form_contact');
       },
       child: ValueListenableBuilder(
         valueListenable: titulo,

@@ -1,9 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:todo_expo/models/person_model.dart';
 import 'package:todo_expo/ui/pages/list_contact_page.dart';
-import 'package:todo_expo/ui/widgets/custom_buttons.dart';
-import 'package:todo_expo/ui/widgets/custom_listtile.dart';
+
 
 
 
@@ -13,13 +11,6 @@ List<Widget> pages = [
     color: Colors.red,
   )
 ];
-
-// Widget buttons() {
-//   return FlatButton(
-//     onPressed: () {},
-//     child: Text('Flat button'),
-//   );
-// }
 
 GlobalKey<ScaffoldState> homeKey = GlobalKey<ScaffoldState>();
 
