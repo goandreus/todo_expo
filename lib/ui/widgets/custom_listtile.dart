@@ -24,9 +24,9 @@ class CustomListTile extends StatelessWidget {
             ],
           ),
         ),
-        leading: Icon(person.iconoIzquierda),
+        leading: CircleAvatar(child: Text(person.nombre[0].toUpperCase()),),
         title: Text(person.nombre),
-        subtitle: Text(person.descripcion),
+        subtitle: Text(person.nickName),
       );
   }
 }

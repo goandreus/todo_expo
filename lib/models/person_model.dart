@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class PersonModel{
-  final IconData iconoIzquierda;
-  final IconData iconoDerecha;
-  final String nombre;
-  final String descripcion;
+   IconData iconoIzquierda;
+   IconData iconoDerecha;
+   String nombre;
+   String descripcion;
+   String nickName;
+   String telefono;
 
-  PersonModel({this.iconoIzquierda, this.iconoDerecha, this.nombre, this.descripcion});
+  PersonModel({this.iconoIzquierda, this.iconoDerecha, this.nombre, this.descripcion, this.nickName, this.telefono});
   
 }
 
@@ -15,6 +17,7 @@ PersonModel persona1 = PersonModel(
     descripcion: 'Example',
     iconoDerecha: Icons.message,
     iconoIzquierda: Icons.person,
+    nickName: 'goandreus'
   );
 
   PersonModel persona2 = PersonModel(
@@ -22,6 +25,7 @@ PersonModel persona1 = PersonModel(
     descripcion: 'Example',
     iconoDerecha: Icons.message,
     iconoIzquierda: Icons.person,
+    nickName: 'alvar'
   );
 
   PersonModel persona3 = PersonModel(
@@ -29,4 +33,5 @@ PersonModel persona1 = PersonModel(
     descripcion: 'Example',
     iconoDerecha: Icons.message,
     iconoIzquierda: Icons.person,
+    nickName: 'freelo'
   );

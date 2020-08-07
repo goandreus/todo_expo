@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_expo/controllers/list_contacts_controller.dart';
+import 'package:todo_expo/models/person_model.dart';
 
 GlobalKey<FormState> formContactKey = GlobalKey<FormState>();
 GlobalKey<ScaffoldState> formPageKey = GlobalKey<ScaffoldState>();
@@ -22,20 +24,23 @@ class _FormContactPageState extends State<FormContactPage> {
     _telefonoController = TextEditingController(text: '');
   }
 
+  ListContactController _controller = ListContactController.instancia;
+  PersonModel _person = PersonModel();
+
   @override
   Widget build(BuildContext context) {
     print(_nameController.text);
-    return Scaffold(
-      key: formPageKey,
-      appBar: AppBar(
-       // automaticallyImplyLeading: false,
-        title: Text('New contact'),
-      ),
-      body: GestureDetector(
-        onTap: (){
-          FocusScope.of(context).requestFocus(FocusNode());
-        },
-        child: SingleChildScrollView(
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: Scaffold(
+        key: formPageKey,
+        appBar: AppBar(
+         // automaticallyImplyLeading: false,
+          title: Text('New contact'),
+        ),
+        body: SingleChildScrollView(
           child: Form(
             key: formContactKey,
             child: Padding(
@@ -52,7 +57,7 @@ class _FormContactPageState extends State<FormContactPage> {
                       labelText: 'Ej. Andres Chavez'
                     ),
                     controller: _nameController,
-                    onChanged: (value) => print(_nameController.text),
+                    onChanged: (value) => _person.nombre = value,
                   ),
                   SizedBox(
                     height: 8,
@@ -67,14 +72,14 @@ class _FormContactPageState extends State<FormContactPage> {
                       labelText: 'NickName'
                     ),
                     controller: _nicknameController,
-                    onChanged: (value) => print(_nicknameController.text),
+                    onChanged: (value) => _person.nickName = value,
                   ),
                   SizedBox(
                     height: 8,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                      hintText: 'Telefono',
+                      hintText: 'Phone',
                       prefixIcon: Icon(Icons.phone),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(color: Theme.of(context).primaryColor)
@@ -82,8 +87,18 @@ class _FormContactPageState extends State<FormContactPage> {
                       labelText: 'Ej. (+591) 978757741'
                     ),
                     controller: _telefonoController,
-                    onChanged: (value) => print(_telefonoController.text),
+                    onChanged: (value) => _person.telefono = value,
                   ),
+                  SizedBox(height: 20,),
+                  RaisedButton(
+                    color: Theme.of(context).primaryColor,
+                    onPressed: (){
+                      _controller.contacts.value = List.from(_controller.contacts.value)..add(_person);
+                    },
+                    child: Text('Add Contac',
+                    style: TextStyle(color: Colors.white),
+                    ),
+                  )
                 ],
               ),
             ),

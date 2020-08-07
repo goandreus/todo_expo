@@ -8,19 +8,15 @@ void main() {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatefulWidget {
-
   @override
   _MyAppState createState() => _MyAppState();
 }
 
-
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() { 
+  void initState() {
     super.initState();
-    
   }
 
   ThemeController _controller = ThemeController.instance;
@@ -28,13 +24,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: _controller.isDark,
-      builder: (context,value,child){
+      builder: (context, value, child) {
         return MaterialApp(
-        routes: {
-          'contact_detail': (_) => ContactDetailPage(),
-          'form_contact': (_) => FormContactPage(),
-        },
-        debugShowCheckedModeBanner: false,
+          routes: {
+            'contact_detail': (_) => ContactDetailPage(),
+            'form_contact': (_) => FormContactPage(),
+          },
+          debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
             brightness: value ? Brightness.dark : Brightness.light,
@@ -44,7 +40,6 @@ class _MyAppState extends State<MyApp> {
           home: HomePage(),
         );
       },
-      
     );
   }
 }
