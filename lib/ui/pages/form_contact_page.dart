@@ -24,8 +24,19 @@ class _FormContactPageState extends State<FormContactPage> {
     _telefonoController = TextEditingController(text: '');
   }
 
+  bool validateAll(){
+    if(formContactKey.currentState.validate()){
+      return true;
+    }else{
+      formPageKey.currentState.showSnackBar(SnackBar(content: Text('Insert data'),));
+      return false;
+    }
+  }
+
   ListContactController _controller = ListContactController.instancia;
   PersonModel _person = PersonModel();
+
+  String validate(String value, String key) => value.isEmpty ? 'Insert to ${key}' : null; 
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +59,7 @@ class _FormContactPageState extends State<FormContactPage> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
+                    validator: (value) => validate(value, "Name"),
                     decoration: InputDecoration(
                       hintText: 'Nombre',
                       prefixIcon: Icon(Icons.person),
@@ -63,6 +75,7 @@ class _FormContactPageState extends State<FormContactPage> {
                     height: 8,
                   ),
                   TextFormField(
+                    validator: (value) => validate(value, "NickName"),
                     decoration: InputDecoration(
                       hintText: 'NickName',
                       prefixIcon: Icon(Icons.person),
@@ -78,6 +91,7 @@ class _FormContactPageState extends State<FormContactPage> {
                     height: 8,
                   ),
                   TextFormField(
+                    validator: (value) => validate(value, "Phone"),
                     decoration: InputDecoration(
                       hintText: 'Phone',
                       prefixIcon: Icon(Icons.phone),
@@ -93,7 +107,9 @@ class _FormContactPageState extends State<FormContactPage> {
                   RaisedButton(
                     color: Theme.of(context).primaryColor,
                     onPressed: (){
-                      _controller.contacts.value = List.from(_controller.contacts.value)..add(_person);
+                      if(validateAll()){
+                        _controller.contacts.value = List.from(_controller.contacts.value)..add(_person);
+                      }
                     },
                     child: Text('Add Contac',
                     style: TextStyle(color: Colors.white),
