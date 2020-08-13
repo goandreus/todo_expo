@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:todo_expo/controllers/list_contacts_controller.dart';
 import 'package:todo_expo/models/person_model.dart';
 
@@ -59,6 +60,7 @@ class _FormContactPageState extends State<FormContactPage> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
+                    inputFormatters: [WhitelistingTextInputFormatter(RegExp('[A-Z a-z]'))],
                     validator: (value) => validate(value, "Name"),
                     decoration: InputDecoration(
                       hintText: 'Nombre',
@@ -75,6 +77,7 @@ class _FormContactPageState extends State<FormContactPage> {
                     height: 8,
                   ),
                   TextFormField(
+                    
                     validator: (value) => validate(value, "NickName"),
                     decoration: InputDecoration(
                       hintText: 'NickName',
@@ -91,6 +94,8 @@ class _FormContactPageState extends State<FormContactPage> {
                     height: 8,
                   ),
                   TextFormField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [WhitelistingTextInputFormatter(RegExp('[0-9]'))],
                     validator: (value) => validate(value, "Phone"),
                     decoration: InputDecoration(
                       hintText: 'Phone',
@@ -109,6 +114,7 @@ class _FormContactPageState extends State<FormContactPage> {
                     onPressed: (){
                       if(validateAll()){
                         _controller.contacts.value = List.from(_controller.contacts.value)..add(_person);
+                        Navigator.pop(context);
                       }
                     },
                     child: Text('Add Contac',
