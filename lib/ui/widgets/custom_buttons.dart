@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_expo/controllers/main_controller.dart';
 import 'package:todo_expo/controllers/theme_controller.dart';
 
@@ -33,7 +34,7 @@ class CustomButton extends StatelessWidget {
           child: Center(
             child: Text(
               value,
-              style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20),
+              style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20.0, fontFamily: 'Better'),
             ),
           ),
         );
