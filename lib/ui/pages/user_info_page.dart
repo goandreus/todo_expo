@@ -11,8 +11,8 @@ class UserInfoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            height: 200,
-            width: 200,
+            height: 120,
+            width: 120,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100), color: Colors.blue,
               image: DecorationImage(image: NetworkImage('https://static1.abc.es/media/play/2018/06/27/hayden-christensen-kzW--620x349@abc.jpg'),
