@@ -1,15 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:todo_expo/ui/pages/list_contact_page.dart';
-
-
-
+import 'package:todo_expo/ui/pages/user_info_page.dart';
 
 List<Widget> pages = [
   ListContactPage(),
-  Container(
-    color: Colors.red,
-  )
+  UserInfoPage()
 ];
 
 GlobalKey<ScaffoldState> homeKey = GlobalKey<ScaffoldState>();
@@ -59,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               ListTile(
-                title: Text('Segunda Pantalla'),
+                title: Text('User Info'),
                 onTap: () {
                   Navigator.of(context).pop();
                   setState(() {
