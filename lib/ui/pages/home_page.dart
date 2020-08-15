@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:todo_expo/ui/pages/list_contact_page.dart';
 import 'package:todo_expo/ui/pages/user_info_page.dart';
 
@@ -7,6 +8,8 @@ List<Widget> pages = [
   ListContactPage(),
   UserInfoPage()
 ];
+
+const IconData whatsAppIcon = IconData(0xea93,fontFamily: 'CustomIcon');
 
 GlobalKey<ScaffoldState> homeKey = GlobalKey<ScaffoldState>();
 
@@ -45,6 +48,7 @@ class _HomePageState extends State<HomePage> {
               ),
               ListTile(
                 title: Text('Inicio'),
+                leading: Icon(MdiIcons.homeCircle),
                 onTap: () {
                   homeKey.currentState
                       .showSnackBar(SnackBar(content: Text('Soy un snackbar')));
@@ -55,6 +59,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               ListTile(
+                leading: Icon(MdiIcons.accountBox),
                 title: Text('User Info'),
                 onTap: () {
                   Navigator.of(context).pop();
