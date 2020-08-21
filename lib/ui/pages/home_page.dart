@@ -25,6 +25,13 @@ class _HomePageState extends State<HomePage> {
 
   int picker;
 
+  void initDownload(){
+    print('inicia la descarga de la imagen');
+    Future.delayed(Duration(seconds: 2), (){
+      print('Se descargo imagen');
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -87,7 +94,11 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text(titulo),
           actions: <Widget>[
-            picker == 1 ? IconButton(icon: Icon(Icons.edit),onPressed: () {})
+            picker == 1 ? IconButton(icon: Icon(Icons.edit),onPressed: () {
+              print('se presiono boton');
+              initDownload();
+              print('se esta mostrando la imagen');
+            })
             : SizedBox(),
           ],
         ),
