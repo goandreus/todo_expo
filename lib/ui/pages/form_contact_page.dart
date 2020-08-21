@@ -37,7 +37,7 @@ class _FormContactPageState extends State<FormContactPage> {
   ListContactController _controller = ListContactController.instancia;
   PersonModel _person = PersonModel();
 
-  String validate(String value, String key) => value.isEmpty ? 'Insert to ${key}' : null; 
+  String validate(String value, String key) => value.isEmpty ? 'Insert to $key' : null; 
 
   @override
   Widget build(BuildContext context) {
