@@ -87,9 +87,8 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text(titulo),
           actions: <Widget>[
-            IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.image)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.message)),
+            IconButton(icon: Icon(Icons.edit),onPressed: () {}),
+            
           ],
         ),
         body: pages[picker],
