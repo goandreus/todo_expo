@@ -25,9 +25,10 @@ class _HomePageState extends State<HomePage> {
 
   int picker;
 
-  void initDownload(){
+  Future<void> initDownload() async {
     print('inicia la descarga de la imagen');
-    Future.delayed(Duration(seconds: 2), (){
+    
+    await Future.delayed(Duration(seconds: 2), (){
       print('Se descargo imagen');
     });
   }
@@ -94,9 +95,9 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text(titulo),
           actions: <Widget>[
-            picker == 1 ? IconButton(icon: Icon(Icons.edit),onPressed: () {
+            picker == 1 ? IconButton(icon: Icon(Icons.edit),onPressed: () async {
               print('se presiono boton');
-              initDownload();
+              await initDownload();
               print('se esta mostrando la imagen');
             })
             : SizedBox(),
