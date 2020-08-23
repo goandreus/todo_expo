@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_expo/controllers/main_controller.dart';
 import 'package:todo_expo/controllers/theme_controller.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomButton extends StatefulWidget {
   
+  @override
+  _CustomButtonState createState() => _CustomButtonState();
+}
+
+class _CustomButtonState extends State<CustomButton> {
   ValueNotifier<String> titulo = ValueNotifier<String>('Add Contact');
+
   ThemeController _controller = ThemeController.instance;
 
   @override

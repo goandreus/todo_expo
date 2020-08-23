@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:todo_expo/controllers/list_contacts_controller.dart';
-import 'package:todo_expo/models/person_model.dart';
 import 'package:todo_expo/ui/widgets/custom_buttons.dart';
 import 'package:todo_expo/ui/widgets/custom_listtile.dart';
 
 
-class ListContactPage extends StatelessWidget {
+class ListContactPage extends StatefulWidget {
+  @override
+  _ListContactPageState createState() => _ListContactPageState();
+}
+
+class _ListContactPageState extends State<ListContactPage> {
   ListContactController controller = ListContactController.instancia;
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
