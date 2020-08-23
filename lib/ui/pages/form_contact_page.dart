@@ -60,7 +60,7 @@ class _FormContactPageState extends State<FormContactPage> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
-                    inputFormatters: [WhitelistingTextInputFormatter(RegExp('[A-Z a-z]'))],
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[A-Z a-z]'))],
                     validator: (value) => validate(value, "Name"),
                     decoration: InputDecoration(
                       hintText: 'Nombre',
@@ -95,7 +95,7 @@ class _FormContactPageState extends State<FormContactPage> {
                   ),
                   TextFormField(
                     keyboardType: TextInputType.number,
-                    inputFormatters: [WhitelistingTextInputFormatter(RegExp('[0-9]'))],
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
                     validator: (value) => validate(value, "Phone"),
                     decoration: InputDecoration(
                       hintText: 'Phone',
