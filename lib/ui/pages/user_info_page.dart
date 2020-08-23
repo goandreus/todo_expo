@@ -10,6 +10,7 @@ class UserInfoPage extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
@@ -28,7 +29,13 @@ class UserInfoPage extends StatelessWidget {
               if(result.hasData){
                 final data = jsonDecode(result.data);
 
-              return Text(data['nombre'], style: Theme.of(context).textTheme.headline6,);
+              return Column(
+                children: [
+                  Text(data['nombre'], style: Theme.of(context).textTheme.headline6,),
+                  SizedBox(height: 8,),
+                  Text(data['phone'], style: Theme.of(context).textTheme.subtitle1,)
+                ],
+                ); 
               }
               return Container();
             },
