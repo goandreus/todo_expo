@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class UserInfoPage extends StatelessWidget {
@@ -18,7 +20,19 @@ class UserInfoPage extends StatelessWidget {
               image: DecorationImage(image: NetworkImage('https://static1.abc.es/media/play/2018/06/27/hayden-christensen-kzW--620x349@abc.jpg'),
               fit: BoxFit.cover)
             ),
-          )
+          ),
+          FutureBuilder(
+            future: DefaultAssetBundle.of(context).loadString('assets/data.json'),
+            builder: (context, result){
+
+              if(result.hasData){
+                final data = jsonDecode(result.data);
+
+              return Text(data['nombre'], style: Theme.of(context).textTheme.headline6,);
+              }
+              return Container();
+            },
+          ),
         ],
       ),
     );
