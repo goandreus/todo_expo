@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_expo/models/person_model.dart';
 import 'package:todo_expo/ui/pages/contact_details_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const IconData whatsAppIcon = IconData(0xea93,fontFamily: 'CustomIcon');
 
@@ -22,8 +23,12 @@ class CustomListTile extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              IconButton(icon: Icon(whatsAppIcon), onPressed: (){},),
-              IconButton(icon: Icon(Icons.call), onPressed: (){},)
+              IconButton(icon: Icon(whatsAppIcon), onPressed: (){
+                launch("https://wa.me/${person.telefono}?text='hola'");
+              },),
+              IconButton(icon: Icon(Icons.call), onPressed: (){
+                launch('tel: ${person.telefono}');
+              },)
             ],
           ),
         ),

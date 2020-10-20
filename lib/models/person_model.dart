@@ -17,6 +17,7 @@ PersonModel persona1 = PersonModel(
     descripcion: 'Example',
     iconoDerecha: Icons.message,
     iconoIzquierda: Icons.person,
+    telefono: '989898978',
     nickName: 'goandreus'
   );
 
@@ -25,6 +26,7 @@ PersonModel persona1 = PersonModel(
     descripcion: 'Example',
     iconoDerecha: Icons.message,
     iconoIzquierda: Icons.person,
+    telefono: '989293929',
     nickName: 'alvar'
   );
 
