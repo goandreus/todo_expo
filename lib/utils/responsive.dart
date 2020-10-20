@@ -15,7 +15,7 @@ class Responsive {
     return Responsive(height: size.height, width: size.width, inch: inch);
   }
 
-  //width
+  //width 
   double wp(double percent){
     return this.width* percent / 100;
   }
