@@ -1,15 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:todo_expo/ui/pages/list_contact_page.dart';
 import 'package:todo_expo/ui/pages/user_info_page.dart';
 
-List<Widget> pages = [
-  ListContactPage(),
-  UserInfoPage()
-];
+import '../../controllers/theme_controller.dart';
 
-const IconData whatsAppIcon = IconData(0xea93,fontFamily: 'CustomIcon');
+List<Widget> pages = [ListContactPage(), UserInfoPage()];
+
+const IconData whatsAppIcon = IconData(0xea93, fontFamily: 'CustomIcon');
 
 GlobalKey<ScaffoldState> homeKey = GlobalKey<ScaffoldState>();
 
@@ -25,19 +23,22 @@ class _HomePageState extends State<HomePage> {
 
   int picker;
 
-  Future<void> initDownload() async {
-    print('inicia la descarga de la imagen');
-    
-    await Future.delayed(Duration(seconds: 2), (){
-      print('Se descargo imagen');
-    });
-  }
+  // Future<void> initDownload() async {
+  //   print('inicia la descarga de la imagen');
+
+  //   await Future.delayed(Duration(seconds: 2), () {
+  //     print('Se descargo imagen');
+  //   });
+  // }
 
   @override
   void initState() {
     super.initState();
     picker = 0;
   }
+
+  ThemeController _controller = ThemeController.instance;
+  bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +59,8 @@ class _HomePageState extends State<HomePage> {
                 title: Text('Inicio'),
                 leading: Icon(MdiIcons.homeCircle),
                 onTap: () {
-                  homeKey.currentState
-                      .showSnackBar(SnackBar(content: Text('Soy un snackbar')));
+                  // homeKey.currentState
+                  //     .showSnackBar(SnackBar(content: Text('Soy un snackbar')));
                   Navigator.of(context).pop();
                   setState(() {
                     picker = 0;
@@ -75,6 +76,18 @@ class _HomePageState extends State<HomePage> {
                     picker = 1;
                   });
                 },
+              ),
+              ListTile(
+                leading: Switch(
+                  value: isSwitched,
+                  onChanged: (value) {
+                    setState(() {
+                      _controller.changeTheme(value);
+                      isSwitched = value;
+                      print(isSwitched);
+                    });
+                  },
+                ),
               ),
             ],
           ),
@@ -94,14 +107,17 @@ class _HomePageState extends State<HomePage> {
         ),
         appBar: AppBar(
           title: Text(titulo),
-          actions: <Widget>[
-            picker == 1 ? IconButton(icon: Icon(Icons.edit),onPressed: () async {
-              print('se presiono boton');
-              await initDownload();
-              print('se esta mostrando la imagen');
-            })
-            : SizedBox(),
-          ],
+          // actions: <Widget>[
+          //   picker == 1
+          //       ? IconButton(
+          //           icon: Icon(Icons.edit),
+          //           onPressed: () async {
+          //             print('se presiono boton');
+          //             await initDownload();
+          //             print('se esta mostrando la imagen');
+          //           })
+          //       : SizedBox(),
+          // ],
         ),
         body: pages[picker],
       ),
