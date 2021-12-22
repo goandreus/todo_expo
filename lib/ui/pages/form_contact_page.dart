@@ -117,7 +117,7 @@ class _FormContactPageState extends State<FormContactPage> {
                         Navigator.pop(context);
                       }
                     },
-                    child: Text('Add Contac',
+                    child: Text('Agregar Contacto',
                     style: TextStyle(color: Colors.white),
                     ),
                   )
