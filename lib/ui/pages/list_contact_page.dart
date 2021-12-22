@@ -3,7 +3,6 @@ import 'package:todo_expo/controllers/list_contacts_controller.dart';
 import 'package:todo_expo/ui/widgets/custom_buttons.dart';
 import 'package:todo_expo/ui/widgets/custom_listtile.dart';
 
-
 class ListContactPage extends StatefulWidget {
   @override
   _ListContactPageState createState() => _ListContactPageState();
