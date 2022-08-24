@@ -1,4 +1,4 @@
-# todo_expo
+# Expor GDG Perú - Arequipa
 
 A new Flutter project.
 
